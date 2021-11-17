@@ -1,5 +1,5 @@
 ## 📄 Overview
-The PDF parsing library enables you to read the text from either a PDF which already contains text, or a scanned PDF (no text contained in file) using [Tesseract OCR](https://github.com/tesseract-ocr/tesseract).
+This PDF parsing library enables you to read the text from either a PDF which already contains text, or a scanned PDF (no text contained in file) using [Tesseract OCR](https://github.com/tesseract-ocr/tesseract).
 If the text is already present in the PDF file, the read is near-instantaneous. The OCR method takes considerably longer (several seconds).
 
 ## Credit
