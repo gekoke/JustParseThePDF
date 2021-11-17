@@ -6,6 +6,15 @@ If the text is already present in the PDF file, the read is near-instantaneous. 
 Thanks to StackOverflow user HamedH. The PDF to image conversion portion of this library is a modified version of their code snippet
 from the thread https://stackoverflow.com/questions/23905169/how-to-convert-pdf-files-to-images.
 
+## Quickstart
+```shell
+cd YOURPROJECT
+dotnet add package JustParseThePDF --version 1.1.2
+mkdir tessdata
+cd tessdata
+wget https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata?raw=true
+```
+
 ## Requirements
 You must supply a directory which contains a trained Tesseract model with the filename "eng.traineddata" to the parser. (You can get a pretrained model file from [here](https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata). Make sure to copy the file to the build output directory! In Visual Studio, you can do this by performing: Select file in Solution Explorer -> Properies window -> Copy to Output Directory -> Always)
 
