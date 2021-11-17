@@ -14,6 +14,8 @@ You must supply a directory which contains a trained Tesseract model with the fi
 
 - Since most of the methods in the library are static, numerous temporary objects are constructed which may reduce the performance when issuing consecutive method calls. This isn't difficult to fix, either.
 
+- Currently assumes you only care about English.
+
 ## Examples
 
 ### Parsing the contents of a PDF
