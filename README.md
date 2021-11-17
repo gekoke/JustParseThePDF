@@ -44,7 +44,7 @@ SortedDictionary<int, List<string>> pages = await parser.GetLinesByPage("pathto/
 #### Parsing all the text from a PDF.
 ```csharp
 // Watch out! Transitions from one page to another are not delimited by newline characters (or any character for that matter).
-string text = await PDFParser.GetText("pathto/something.pdf");
+string text = await parser.GetText("pathto/something.pdf");
 List<string> lines = await parser.GetLines("pathto/something.pdf");
 ```
 
