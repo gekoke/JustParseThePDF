@@ -1,3 +1,5 @@
+
+
 ## 📄 Overview
 This PDF parsing library enables you to read the text from either a PDF which already contains text, or a scanned PDF (no text contained in file) using [Tesseract OCR](https://github.com/tesseract-ocr/tesseract).
 If the text is already present in the PDF file, the read is near-instantaneous. The OCR method takes considerably longer (several seconds).
@@ -5,6 +7,13 @@ If the text is already present in the PDF file, the read is near-instantaneous. 
 ## Credit
 Thanks to StackOverflow user HamedH. The PDF to image conversion portion of this library is a modified version of their code snippet
 from the thread https://stackoverflow.com/questions/23905169/how-to-convert-pdf-files-to-images.
+
+## Install
+[![NuGet version (JustParseThePDF)](https://img.shields.io/nuget/v/JustParseThePDF)](https://www.nuget.org/packages/JustParseThePDF/)
+
+```shell
+dotnet add package JustParseThePDF
+```
 
 ## Requirements
 You must supply a directory which contains a trained Tesseract model with the filename "eng.traineddata" to the parser. (You can get a pretrained model file from [here](https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata). Make sure to copy the file to the build output directory! In Visual Studio, you can do this by performing: Select file in Solution Explorer -> Properties window -> Copy to Output Directory -> Always)
