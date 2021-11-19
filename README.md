@@ -19,7 +19,7 @@ dotnet add package JustParseThePDF
 You must supply a directory which contains a trained Tesseract model with the filename "eng.traineddata" to the parser. (You can get a pretrained model file from [here](https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata). Make sure to copy the file to the build output directory! In Visual Studio, you can do this by performing: Select file in Solution Explorer -> Properties window -> Copy to Output Directory -> Always)
 
 ## Limitations
-- This library currently only supports Windows, as the PDF to image conversion relies on the BitMap class. It shouldn't be too difficult to change this to be a cross-platform implementation, though.
+- This library currently only supports Windows, as the PDF to image conversion relies on System.Drawing.Common. It shouldn't be too difficult to change this to be a cross-platform implementation, though. More information on this can be found at https://docs.microsoft.com/en-us/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only.
 
 - Since most of the methods in the library are static, numerous temporary objects are constructed which may reduce the performance when issuing consecutive method calls. This isn't difficult to fix, either.
 
