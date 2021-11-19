@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Tesseract;
+﻿using Tesseract;
 
 namespace gekoke.JustParse.OCR {
     public class ImageTextExtractor {
@@ -11,16 +10,11 @@ namespace gekoke.JustParse.OCR {
         /// <returns>The text as parsed from the input image</returns>
         public static string GetImageText(
             string sourceFilePath,
-            string trainedModelDirectory,
-            string language,
-            Dictionary<string, string>? tesseractOptions = null
+            TesseractEngine engine,
+            PageSegMode? pageSegMode = null
         ) {
-            using var engine = new TesseractEngine(trainedModelDirectory, language);
-            if (tesseractOptions != null)
-                foreach (var pair in tesseractOptions) engine.SetVariable(pair.Key, pair.Value);
-
             using var img = Pix.LoadFromFile(sourceFilePath);
-            using var page = engine.Process(img);
+            using var page = engine.Process(img, pageSegMode);
             return page.GetText();
         }
     }

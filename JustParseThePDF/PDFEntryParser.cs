@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tesseract;
 
 namespace gekoke.JustParse.PDF {
     /// <summary>
@@ -17,12 +18,10 @@ namespace gekoke.JustParse.PDF {
         /// <param name="isScanned">Whether the PDF is scanned and therefore contains no searchable text.</param>
         protected PDFEntryParser(
             string pathToPDF,
-            string pathToTrainedModelDirectory,
-            string language,
-            Dictionary<string, string>? tesseractOptions,
+            TesseractEngine engine,
             bool? isScanned = null
         ) {
-            pdfParser = new(pathToTrainedModelDirectory, language, tesseractOptions);
+            pdfParser = new(engine);
             IsScannedPDF = (isScanned == null) ? PDFParser.IsScannedPDF(pathToPDF) : (bool)isScanned;
             PathToPDF = pathToPDF;
         }

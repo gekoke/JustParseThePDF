@@ -1,9 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustParseThePDF", "JustParseThePDF\JustParseThePDF.csproj", "{592EE861-B59D-442E-809D-9366ADE32CB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustParseThePDF", "JustParseThePDF\JustParseThePDF.csproj", "{592EE861-B59D-442E-809D-9366ADE32CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustParseThePDFTesting.user", "JustParseThePDFTesting.user\JustParseThePDFTesting.user.csproj", "{79595EAD-6FEA-4904-8A7F-4D885501E78B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,9 +14,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{592EE861-B59D-442E-809D-9366ADE32CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +28,23 @@ Global
 		{592EE861-B59D-442E-809D-9366ADE32CB4}.Release|x64.Build.0 = Release|Any CPU
 		{592EE861-B59D-442E-809D-9366ADE32CB4}.Release|x86.ActiveCfg = Release|Any CPU
 		{592EE861-B59D-442E-809D-9366ADE32CB4}.Release|x86.Build.0 = Release|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Debug|x64.Build.0 = Debug|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Debug|x86.Build.0 = Debug|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Release|x64.ActiveCfg = Release|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Release|x64.Build.0 = Release|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Release|x86.ActiveCfg = Release|Any CPU
+		{79595EAD-6FEA-4904-8A7F-4D885501E78B}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4CE8116-9EDF-4D75-961E-405C23494131}
 	EndGlobalSection
 EndGlobal
