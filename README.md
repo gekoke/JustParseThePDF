@@ -112,8 +112,8 @@ namespace example {
 And then read the entries like so:
 
 ```csharp
-var engine = new TesseractEngine("path/to/trained/model", "eng");
-var parser = new ProductEntryParser("pathto/mypdf.pdf");
+using var engine = new TesseractEngine("path/to/trained/model", "eng");
+var parser = new ProductEntryParser("pathto/mypdf.pdf", engine);
 
 var entries = await parser.GetEntries();
 if (entries[0].Product != "Inflatable Amogus") throw new Exception("This should ideally never happen! :)");
