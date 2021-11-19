@@ -76,7 +76,7 @@ namespace example {
     public record ProductEntry(int Id, string Product, decimal Amount) { }
 
     public class ProductEntryParser : PDFEntryParser<ProductEntry> {
-        public ProductEntryParser(string pathToPDF, bool? isScanned = null) : base(pathToPDF, isScanned) { }
+        public ProductEntryParser(string pathToPDF, TesseractEngine engine, bool? isScanned = null) : base(pathToPDF, engine, isScanned) { }
 
         // Define how to convert a line that is assumed to be an entry into the desired data type.
         protected override ProductEntry ConvertLineToEntry(string line) {
