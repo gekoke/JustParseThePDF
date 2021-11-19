@@ -113,7 +113,7 @@ namespace example {
 And then read the entries like so:
 
 ```csharp
-var parser = new ProductEntryParser("pathto/mypdf.pdf");
+var parser = new ProductEntryParser("pathto/mypdf.pdf", new TesseractEngine("tessdata/", "eng"));
 var entries = await parser.GetEntries();
 if (entries[0].Product != "Inflatable Amogus") throw new Exception("This should ideally never happen! :)");
 ```
