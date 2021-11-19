@@ -35,8 +35,7 @@ bool isScanned = PDFParser.IsScannedPDF("pathto/something.pdf");
 
 #### Creating a parser
 ```csharp
-// Specify a path to trained models if needed. By default it's @"./tessdata".
-var parser = new PDFParser(trainedModelDirectory = @"./some/path/to/models");
+var parser = new PDFParser(new TesseractEngine("tessdata/", "eng"));
 ```
 
 #### Parsing the text from a PDF by page.
@@ -46,7 +45,8 @@ var parser = new PDFParser(trainedModelDirectory = @"./some/path/to/models");
 // From my usage, it seems that the detection is solid enough.
 SortedDictionary<int, string> pages = await parser.GetTextByPage("pathto/something.pdf", isScannedPDF: true);
 
-SortedDictionary<int, List<string>> pages = await parser.GetLinesByPage("pathto/something.pdf");
+// You can also specify a specific segmentation mode to use - the default is automatic detection.
+SortedDictionary<int, List<string>> pages = await parser.GetLinesByPage("pathto/something.pdf", pageSegmentationMode: PageSegMode.SingleBlock);
 ```
 
 #### Parsing all the text from a PDF.
