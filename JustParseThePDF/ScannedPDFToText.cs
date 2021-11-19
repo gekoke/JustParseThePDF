@@ -6,7 +6,12 @@ using System.Linq;
 
 namespace gekoke.JustParse.PDF {
     internal class ScannedPDFToText {
-        public static SortedDictionary<int, string> GetTextByPage(string pdfPath, string trainedModelDirectory) {
+        public static SortedDictionary<int, string> GetTextByPage(
+            string pdfPath,
+            string trainedModelDirectory,
+            string language,
+            Dictionary<string, string>? tesseractOptions = null
+        ) {
             SortedDictionary<int, string> textByPage = new();
 
             string tempDir = Path.GetRandomFileName();
@@ -14,7 +19,7 @@ namespace gekoke.JustParse.PDF {
 
             var imagePaths = PDFToImage.Convert(pdfPath, tempDir);
             for (int i = 0; i < imagePaths.Count; i++)
-                textByPage[i + 1] = ImageTextExtractor.GetImageText(imagePaths[i], trainedModelDirectory);
+                textByPage[i + 1] = ImageTextExtractor.GetImageText(imagePaths[i], trainedModelDirectory, language, tesseractOptions);
 
             Directory.Delete(tempDir, recursive: true);
 
@@ -22,8 +27,13 @@ namespace gekoke.JustParse.PDF {
         }
 
         /// <param name="discardEmptyLines">Discards lines where performing <see cref="string.Trim"/> would result in a <see cref="string.Empty"/></param>
-        public static SortedDictionary<int, List<string>> GetLinesByPage(string pdfPath, string trainedModelDirectory) {
-            var textByPage = GetTextByPage(pdfPath, trainedModelDirectory);
+        public static SortedDictionary<int, List<string>> GetLinesByPage(
+            string pdfPath,
+            string trainedModelDirectory,
+            string language,
+            Dictionary<string, string>? tesseractOptions = null
+        ) {
+            var textByPage = GetTextByPage(pdfPath, trainedModelDirectory, language, tesseractOptions);
             SortedDictionary<int, List<string>> linesByPage = new();
 
             foreach (var pair in textByPage)

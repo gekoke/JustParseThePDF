@@ -9,9 +9,13 @@ using System.Threading.Tasks;
 namespace gekoke.JustParse.PDF {
     public class PDFParser {
         private readonly string trainedModelDirectory;
+        private readonly string language;
+        private readonly Dictionary<string, string>? tesseractOptions;
 
-        public PDFParser(string trainedModelDirectory = @"./tessdata") {
+        public PDFParser(string trainedModelDirectory, string language, Dictionary<string, string>? tesseractOptions = null) {
             this.trainedModelDirectory = trainedModelDirectory;
+            this.language = language;
+            this.tesseractOptions = tesseractOptions;
         }
 
         public async Task<string> GetText(string pathToPDF, bool? isScannedPDF = null) {
@@ -19,7 +23,7 @@ namespace gekoke.JustParse.PDF {
                 if (isScannedPDF == null) isScannedPDF = IsScannedPDF(pathToPDF);
 
                 SortedDictionary<int, string> textByPage;
-                if ((bool)isScannedPDF) textByPage = ScannedPDFToText.GetTextByPage(pathToPDF, trainedModelDirectory);
+                if ((bool)isScannedPDF) textByPage = ScannedPDFToText.GetTextByPage(pathToPDF, trainedModelDirectory, language, tesseractOptions);
                 else textByPage = ReadTextFromSearchablePDF(pathToPDF);
 
                 return string.Join('\n', textByPage.Values);
@@ -31,7 +35,7 @@ namespace gekoke.JustParse.PDF {
                 if (isScannedPDF == null) isScannedPDF = IsScannedPDF(pathToPDF);
 
                 SortedDictionary<int, string> linesByPage;
-                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetTextByPage(pathToPDF, trainedModelDirectory);
+                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetTextByPage(pathToPDF, trainedModelDirectory, language, tesseractOptions);
                 else linesByPage = ReadTextFromSearchablePDF(pathToPDF);
 
                 return linesByPage;
@@ -56,7 +60,7 @@ namespace gekoke.JustParse.PDF {
                 if (isScannedPDF == null) isScannedPDF = IsScannedPDF(pathToPDF);
 
                 SortedDictionary<int, List<string>> linesByPage;
-                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetLinesByPage(pathToPDF, trainedModelDirectory: trainedModelDirectory);
+                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetLinesByPage(pathToPDF, trainedModelDirectory, language, tesseractOptions);
                 else linesByPage = ReadLinesFromSearchablePDF(pathToPDF);
 
                 return linesByPage;

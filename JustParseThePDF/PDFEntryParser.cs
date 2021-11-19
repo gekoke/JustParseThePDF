@@ -17,10 +17,12 @@ namespace gekoke.JustParse.PDF {
         /// <param name="isScanned">Whether the PDF is scanned and therefore contains no searchable text.</param>
         protected PDFEntryParser(
             string pathToPDF,
-            string pathToTrainedModelDirectory = @"./tessdata",
+            string pathToTrainedModelDirectory,
+            string language,
+            Dictionary<string, string>? tesseractOptions,
             bool? isScanned = null
         ) {
-            pdfParser = new(trainedModelDirectory: pathToTrainedModelDirectory);
+            pdfParser = new(pathToTrainedModelDirectory, language, tesseractOptions);
             IsScannedPDF = (isScanned == null) ? PDFParser.IsScannedPDF(pathToPDF) : (bool)isScanned;
             PathToPDF = pathToPDF;
         }
