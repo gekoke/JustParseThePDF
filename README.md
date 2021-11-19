@@ -33,7 +33,8 @@ bool isScanned = PDFParser.IsScannedPDF("pathto/something.pdf");
 
 #### Creating a parser
 ```csharp
-var parser = new PDFParser(new TesseractEngine("tessdata/", "eng"));
+using var engine = new TesseractEngine("path/to/trained/model", "eng");
+var parser = new PDFParser(engine);
 ```
 
 #### Parsing the text from a PDF by page.
@@ -111,8 +112,9 @@ namespace example {
 And then read the entries like so:
 
 ```csharp
-var parser = new ProductEntryParser("pathto/mypdf.pdf", new TesseractEngine("tessdata/", "eng"));
+var engine = new TesseractEngine("path/to/trained/model", "eng");
+var parser = new ProductEntryParser("pathto/mypdf.pdf");
+
 var entries = await parser.GetEntries();
 if (entries[0].Product != "Inflatable Amogus") throw new Exception("This should ideally never happen! :)");
 ```
-
