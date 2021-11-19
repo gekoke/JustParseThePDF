@@ -6,7 +6,6 @@
     <authors>gekoke</authors>
     <description>Enables you to parse both scanned and text-based PDF files with ease</description>
     <summary>Enables you to parse both scanned and text-based PDF files with ease</summary>
-    <repository url="https://github.com/gekoke/JustParseThePDF" />
     <projectUrl>https://github.com/gekoke/JustParseThePDF</projectUrl>
     <license type="expression">GPL-3.0-or-later</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
