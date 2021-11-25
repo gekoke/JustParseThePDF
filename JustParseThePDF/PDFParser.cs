@@ -10,9 +10,11 @@ using Tesseract;
 namespace gekoke.JustParse.PDF {
     public class PDFParser {
         private readonly TesseractEngine engine;
+        private readonly float imageScale;
 
-        public PDFParser(TesseractEngine engine) {
+        public PDFParser(TesseractEngine engine, float imageScale = 2f) {
             this.engine = engine;
+            this.imageScale = imageScale;
         }
 
         public async Task<string> GetText(string pathToPDF, bool? isScannedPDF = null, PageSegMode? pageSegmentationMode = null) {
@@ -20,7 +22,7 @@ namespace gekoke.JustParse.PDF {
                 if (isScannedPDF == null) isScannedPDF = IsScannedPDF(pathToPDF);
 
                 SortedDictionary<int, string> textByPage;
-                if ((bool)isScannedPDF) textByPage = ScannedPDFToText.GetTextByPage(pathToPDF, engine, pageSegmentationMode);
+                if ((bool)isScannedPDF) textByPage = ScannedPDFToText.GetTextByPage(pathToPDF, engine, pageSegmentationMode, imageScale);
                 else textByPage = ReadTextFromSearchablePDF(pathToPDF);
 
                 return string.Join('\n', textByPage.Values);
@@ -32,7 +34,7 @@ namespace gekoke.JustParse.PDF {
                 if (isScannedPDF == null) isScannedPDF = IsScannedPDF(pathToPDF);
 
                 SortedDictionary<int, string> linesByPage;
-                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetTextByPage(pathToPDF, engine, pageSegmentationMode);
+                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetTextByPage(pathToPDF, engine, pageSegmentationMode, imageScale);
                 else linesByPage = ReadTextFromSearchablePDF(pathToPDF);
 
                 return linesByPage;
@@ -57,7 +59,7 @@ namespace gekoke.JustParse.PDF {
                 if (isScannedPDF == null) isScannedPDF = IsScannedPDF(pathToPDF);
 
                 SortedDictionary<int, List<string>> linesByPage;
-                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetLinesByPage(pathToPDF, engine, pageSegmentationMode);
+                if ((bool)isScannedPDF) linesByPage = ScannedPDFToText.GetLinesByPage(pathToPDF, engine, pageSegmentationMode, imageScale);
                 else linesByPage = ReadLinesFromSearchablePDF(pathToPDF);
 
                 return linesByPage;

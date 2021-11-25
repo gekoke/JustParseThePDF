@@ -14,12 +14,13 @@ namespace gekoke.JustParse.Image {
         /// <param name="imageOutputDirectory">The directory to save the output images to</param>
         /// <param name="fileNameWithoutExtension">The filename to save the images as</param>
         /// <param name="imageFormat">The format to save the images in</param>
-        /// <param name="scale">The factor to upscale/downscale the image by (default 1.0)</param>
+        /// <param name="imageScale">The factor to upscale/downscale the image by (default 1.0)</param>
         /// <returns>The paths to the images that were saved</returns>
         public static List<string> Convert(
             string inputPDFPath, string imageOutputDirectory = "",
-            string fileNameWithoutExtension = "output_image", ImageFormat? imageFormat = null,
-            float scale = 1f
+            string fileNameWithoutExtension = "output_image",
+            ImageFormat? imageFormat = null,
+            float imageScale = 1f
         ) {
             List<string> savedImages = new();
             if (imageFormat == null) imageFormat = ImageFormat.Jpeg;
@@ -34,13 +35,13 @@ namespace gekoke.JustParse.Image {
 
                 fpdfview.FPDF_GetPageSizeByIndexF(document, 0, size);
 
-                var width = (int)Math.Round(size.Width * scale);
-                var height = (int)Math.Round(size.Height * scale);
+                var width = (int)Math.Round(size.Width * imageScale);
+                var height = (int)Math.Round(size.Height * imageScale);
                 var bitmap = fpdfview.FPDFBitmapCreateEx(width, height, 4, IntPtr.Zero, 0);
 
                 fpdfview.FPDFBitmapFillRect(bitmap, 0, 0, width, height, (uint)Color.White.ToArgb());
 
-                using var matrix = ConstructMatrix(scale);
+                using var matrix = ConstructMatrix(imageScale);
                 using var clipping = ConstructClipping(width, height);
                 fpdfview.FPDF_RenderPageBitmapWithMatrix(bitmap, page, matrix, clipping, (int)RenderFlags.RenderAnnotations);
 
