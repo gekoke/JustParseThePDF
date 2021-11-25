@@ -17,7 +17,9 @@ dotnet add package JustParseThePDF
 ```
 
 ## Requirements
-You must supply a directory which contains a trained Tesseract model with the filename "eng.traineddata" to the parser. (You can get a pretrained model file from [here](https://github.com/tesseract-ocr/tessdata/blob/main/eng.traineddata). Make sure to copy the file to the build output directory! In Visual Studio, you can do this by performing: Select file in Solution Explorer -> Properties window -> Copy to Output Directory -> Always)
+You must supply a directory containing trained Tesseract models with filenames which follow the format `<MODEL_LANGUAGE_IDENTIFIER>.traineddata` - for example, for English, you might use `eng.traineddata`. You can get pretrained model files from [here](https://github.com/tesseract-ocr/tessdata/). 
+
+Make sure to include the models in your build! In Visual Studio, you can do this by performing: *Select file in Solution Explorer -> Properties window -> Copy to Output Directory -> Always*.
 
 ## Limitations
 - This library currently only supports Windows, as the PDF to image conversion relies on System.Drawing.Common. It shouldn't be too difficult to change this to be a cross-platform implementation, though. More information on this can be found at https://docs.microsoft.com/en-us/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only.
@@ -35,7 +37,7 @@ bool isScanned = PDFParser.IsScannedPDF("pathto/something.pdf");
 
 #### Creating a parser
 ```csharp
-using var engine = new TesseractEngine("path/to/trained/model", "eng");
+using var engine = new TesseractEngine("path/to/trained/model/directory", "eng");
 var parser = new PDFParser(engine);
 ```
 
@@ -114,7 +116,7 @@ namespace example {
 And then read the entries like so:
 
 ```csharp
-using var engine = new TesseractEngine("path/to/trained/model", "eng");
+using var engine = new TesseractEngine("path/to/trained/model/directory", "eng");
 var parser = new ProductEntryParser("pathto/mypdf.pdf", engine);
 
 var entries = await parser.GetEntries();
