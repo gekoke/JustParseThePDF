@@ -10,6 +10,8 @@ from the thread https://stackoverflow.com/questions/23905169/how-to-convert-pdf-
 
 ## Install
 [![NuGet version (JustParseThePDF)](https://img.shields.io/nuget/v/JustParseThePDF)](https://www.nuget.org/packages/JustParseThePDF/)
+[![NuGet downloads (JustParseThePDF)](https://img.shields.io/nuget/dt/JustParseThePDF)](https://www.nuget.org/packages/JustParseThePDF/)
+
 ```shell
 dotnet add package JustParseThePDF
 ```
