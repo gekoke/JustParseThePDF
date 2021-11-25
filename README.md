@@ -9,8 +9,8 @@ Thanks to StackOverflow user HamedH. The PDF to image conversion portion of this
 from the thread https://stackoverflow.com/questions/23905169/how-to-convert-pdf-files-to-images.
 
 ## Install
-[![NuGet version (JustParseThePDF)](https://img.shields.io/nuget/v/JustParseThePDF)](https://www.nuget.org/packages/JustParseThePDF/)
-[![NuGet downloads (JustParseThePDF)](https://img.shields.io/nuget/dt/JustParseThePDF)](https://www.nuget.org/packages/JustParseThePDF/)
+[![NuGet version (JustParseThePDF)](https://img.shields.io/nuget/v/JustParseThePDF?maxAge=3600)](https://www.nuget.org/packages/JustParseThePDF/)
+[![NuGet downloads (JustParseThePDF)](https://img.shields.io/nuget/dt/JustParseThePDF?maxAge=3600)](https://www.nuget.org/packages/JustParseThePDF/)
 
 ```shell
 dotnet add package JustParseThePDF
